@@ -1,0 +1,4 @@
+<div class="container">
+<app-table [data]="products" [selectable]="true" [entity]="newProduct" [config]="config" (deleted)="delete($event)"
+    (saved)="save($event)"></app-table>
+</div>

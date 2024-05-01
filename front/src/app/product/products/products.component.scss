@@ -1,0 +1,44 @@
+.header{
+    text-align: center;
+}
+
+.content{
+    text-align: center;
+}
+
+.grid-price{
+    font-weight: bold;
+    text-align: center;
+}
+
+p {
+    margin: 0em;
+}
+
+.row{
+    display: flex;
+    height: max-content;
+}
+
+.column{
+    width: 20%;
+}
+
+.list-price{
+    font-weight: bold;
+    width: 2%;
+}
+
+.list-status{
+    width: 8%;
+}
+
+
+.container{
+    height: 50px;
+    margin-left: 20%;
+    margin-top: 10px;
+    position: fixed;
+    width: 40%;
+    height: 80%;
+}

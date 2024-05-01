@@ -1,0 +1,40 @@
+<div class="container">
+
+<app-list [items]="products" [backEndSearch]="false" [pagination]="true" [enableDateRange]="false" [listItemTemplate]="listTemplate"
+    [gridItemTemplate]="gridTemplate" [sortOptions]="this.sortOptions" [sortKey]="sortKey" (filtered)="filtered($event)">
+
+    <!-- list template -->
+    <ng-template #listTemplate ngFor let-product [ngForOf]="products" let-i="index" pTemplate="listItem">
+        <div class="column">
+            {{ product.name }}
+        </div>
+        <p-rating class="column" [(ngModel)]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
+        <div class="column">{{ product.category }}</div>
+        <p-tag class="list-status" [severity]="getSeverity(product.inventoryStatus)">
+            {{product.inventoryStatus}}</p-tag>
+        <div class="list-price">{{ '$' + product.price }}</div>
+        <button pButton icon="pi pi-shopping-cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'">
+        </button>
+    </ng-template>
+
+    <!-- grid template -->
+    <ng-template #gridTemplate ngFor let-product [ngForOf]="products" let-i="index" pTemplate="gridItem">
+        <div class="header">
+            <p> <i class="pi pi-tag"></i> {{product.category}}</p>
+            <p-tag [severity]="getSeverity(product.inventoryStatus)"> {{product.inventoryStatus}}</p-tag>
+        </div>
+        <div class="content">
+            <p> {{product.name}}</p>
+            <p> {{product.description}}</p>
+            <p>
+                <p-rating [stars]="5" [readonly]="true" [cancel]="false" [(ngModel)]="product.rating">
+                </p-rating>
+            </p>
+
+        </div>
+        <p class="grid-price"> ${{product.price}}
+            <p-button [disabled]="product.inventoryStatus==='OUTOFSTOCK'" icon="pi pi-shopping-cart"></p-button>
+        </p>
+    </ng-template>
+</app-list>
+</div>
